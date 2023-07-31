@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:netflix_clone/Screens/detailsScreen.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -50,10 +52,40 @@ class _MyHomePageState extends State<MyHomePage> {
       pageController.jumpTo(pagevalue);
     }
 
-    Future getData() async {
+    //for fetching the data from firebase thses function is used
+    Future<QuerySnapshot<Map<String, dynamic>>> getData() async {
       final firestore = FirebaseFirestore.instance;
-      QuerySnapshot snapshot = await firestore.collection('popular').get();
-      return snapshot.docs;
+      QuerySnapshot<Map<String, dynamic>> snapshot =
+          await firestore.collection('popular').get();
+      return snapshot;
+    }
+
+    Future<QuerySnapshot<Map<String, dynamic>>> getAnimatedData() async {
+      final firestore = FirebaseFirestore.instance;
+      QuerySnapshot<Map<String, dynamic>> snapshot =
+          await firestore.collection('popular').get();
+      return snapshot;
+    }
+
+    Future<QuerySnapshot<Map<String, dynamic>>> getOriginalsData() async {
+      final firestore = FirebaseFirestore.instance;
+      QuerySnapshot<Map<String, dynamic>> snapshot =
+          await firestore.collection('popular').get();
+      return snapshot;
+    }
+
+    Future<QuerySnapshot<Map<String, dynamic>>> getRecommendedData() async {
+      final firestore = FirebaseFirestore.instance;
+      QuerySnapshot<Map<String, dynamic>> snapshot =
+          await firestore.collection('popular').get();
+      return snapshot;
+    }
+
+    Future<QuerySnapshot<Map<String, dynamic>>> getKidsData() async {
+      final firestore = FirebaseFirestore.instance;
+      QuerySnapshot<Map<String, dynamic>> snapshot =
+          await firestore.collection('popular').get();
+      return snapshot;
     }
 
     return Scaffold(
@@ -134,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: Container(
-                height: 250,
+                height: 230,
                 child: Image.asset(
                   "assets/images/bg.jpg",
                   scale: 20.0,
@@ -304,7 +336,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 200,
+              height: 150,
               child: Column(
                 children: [
                   Padding(
@@ -318,22 +350,251 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   SizedBox(
-                    height: 179,
-                    child: FutureBuilder(
-                      builder: (context,snapshot){
-                        if(snapshot.connectionState==ConnectionState.waiting)
-                          {
-                            return Lottie.asset("assets/lottie/loading.json");
-                          }
-                        else{
+                    height: 109,
+                    child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                      future: getData(),
+                      // Specify the type of data expected in the future builder
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Lottie.asset("assets/lottie/loading.json");
+                          print("hellow bBY");
+                        } else {
+                          print("hellow bBY TWO");
+                          final data = snapshot.data?.docs ??
+                              []; // Use null-aware operator and null-coalescing operator to handle null case
                           return ListView.builder(
                             scrollDirection: Axis.horizontal,
-                              itemCount: snapshot.data,
-                              itemBuilder: null);
-
+                            itemCount: data.length,
+                            itemBuilder: (_, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: null,
+                                  child: SizedBox(
+                                    height: 100,
+                                    width: 100,
+                                    child: Image.network(data[index]
+                                        ['image']), // Use null-aware operator
+                                  ),
+                                ),
+                              );
+                            },
+                          );
                         }
                       },
                     ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 150,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 190.0),
+                    child: Text(
+                      "Animated",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 109,
+                    child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                      future: getData(),
+                      // Specify the type of data expected in the future builder
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Lottie.asset("assets/lottie/loading.json");
+                          print("hellow bBY");
+                        } else {
+                          print("hellow bBY TWO");
+                          final data = snapshot.data?.docs ??
+                              []; // Use null-aware operator and null-coalescing operator to handle null case
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: data.length,
+                            itemBuilder: (_, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: null,
+                                  child: SizedBox(
+                                    height: 100,
+                                    width: 100,
+                                    child: Image.network(data[index]
+                                        ['image']), // Use null-aware operator
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 150,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 190.0),
+                    child: Text(
+                      "Originals",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 109,
+                    child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                      future: getData(),
+                      // Specify the type of data expected in the future builder
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Lottie.asset("assets/lottie/loading.json");
+                          print("hellow bBY");
+                        } else {
+                          print("hellow bBY TWO");
+                          final data = snapshot.data?.docs ??
+                              []; // Use null-aware operator and null-coalescing operator to handle null case
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: data.length,
+                            itemBuilder: (_, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: null,
+                                  child: SizedBox(
+                                    height: 100,
+                                    width: 100,
+                                    child: Image.network(data[index]
+                                        ['image']), // Use null-aware operator
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 150,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 190.0),
+                    child: Text(
+                      "Recommended",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 109,
+                    child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                      future: getData(),
+                      // Specify the type of data expected in the future builder
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Lottie.asset("assets/lottie/loading.json");
+                        } else {
+                          print("hellow bBY TWO");
+                          final data = snapshot.data?.docs ??
+                              []; // Use null-aware operator and null-coalescing operator to handle null case
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: data.length,
+                            itemBuilder: (_, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: ()=>RoutToDetail(data[index]),
+                                  child: SizedBox(
+                                    height: 100,
+                                    width: 100,
+                                    child: Image.network(data[index]
+                                        ['image']), // Use null-aware operator
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 350,
+              child: Column(
+                children: [
+                  Text(
+                    "Availible now : Season 2",
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 250.0,
+                    width: 300.0,
+                    child: Image.asset("assets/images/bg2.jpg"),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        decoration:BoxDecoration(color:Colors.white,borderRadius: BorderRadius.circular(5)),
+                        child: TextButton.icon(
+                            onPressed: null,
+                            icon: Image.asset("assets/images/play.png",color: Colors.black,scale: 22.0,),
+                            label: Text(
+                              "play",
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18.0,),
+                            )),
+                      ),
+                      Container(
+                        child: TextButton.icon(
+                            onPressed: null,
+                            icon: Image.asset("assets/images/plus.png",color: Colors.white,scale: 22.0,),
+                            label: Text(
+                              "My List",
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 18.0,),
+                            )),
+                      )
+                    ],
                   )
                 ],
               ),
@@ -342,5 +603,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+
+  RoutToDetail(DocumentSnapshot info) {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Detail(info: info,)));
   }
 }
