@@ -116,6 +116,58 @@ class _DetailState extends State<Detail> {
                             )),
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(data?['info'],style: TextStyle(
+                        color: Colors.white
+                      ),),
+                    ),Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        MaterialButton(
+                          onPressed: null,
+                          child: Column(
+                            children: [
+                              Icon(Icons.add,color: Colors.white,),
+                              Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child: Text("MY List",style: TextStyle(color: Colors.white),),
+                              )
+                            ],
+                          ),
+
+                        ),
+                        MaterialButton(
+                          onPressed: null,
+                          child: Column(
+                            children: [
+                              Icon(Icons.thumb_up,color: Colors.white,),
+                              Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child: Text("Rate",style: TextStyle(color: Colors.white),),
+                              )
+                            ],
+                          ),
+
+                        ),
+                        MaterialButton(
+                          onPressed: null,
+                          child: Column(
+                            children: [
+                              Icon(Icons.share,color: Colors.white,),
+                              Padding(
+                                padding: const EdgeInsets.only(top:8.0),
+                                child: Text("Share",style: TextStyle(color: Colors.white),),
+                              )
+                            ],
+                          ),
+
+                        )
+                      ],
+                    )
+
+
+
                   ],
                 ),
                 decoration: BoxDecoration(
