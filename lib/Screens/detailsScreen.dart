@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/widgets/vedioplayer.dart';
 
 import '../main.dart';
 
@@ -85,7 +86,9 @@ class _DetailState extends State<Detail> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(5)),
                         child: TextButton.icon(
-                            onPressed: null,
+                            onPressed: (){
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=> VedioPlayer(vediodata: data?['trailer'],)));
+                            },
                             icon: Icon(
                               Icons.play_arrow,
                               color: Colors.black87,
