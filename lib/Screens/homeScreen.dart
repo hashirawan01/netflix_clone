@@ -61,46 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Colors.black,
-      // bottomNavigationBar: BottomNavigationBar(
-      //   backgroundColor: Colors.black87,
-      //   type: BottomNavigationBarType.fixed,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //         icon: Padding(
-      //           padding: const EdgeInsets.only(bottom: 4.0),
-      //           child: Icon(Icons.home, color: Colors.white),
-      //         ),
-      //         label: 'home'),
-      //     BottomNavigationBarItem(
-      //         icon: Padding(
-      //           padding: const EdgeInsets.only(bottom: 4.0),
-      //           child: Icon(Icons.search, color: Colors.white),
-      //         ),
-      //         label: 'Search'),
-      //     BottomNavigationBarItem(
-      //         icon: Padding(
-      //           padding: const EdgeInsets.only(bottom: 4.0),
-      //           child: Icon(Icons.emoji_emotions, color: Colors.white),
-      //         ),
-      //         label: 'shorts'),
-      //     BottomNavigationBarItem(
-      //         icon: Padding(
-      //           padding: const EdgeInsets.only(bottom: 4.0),
-      //           child: Icon(Icons.video_stable, color: Colors.white),
-      //         ),
-      //         label: 'Coming Soon'),
-      //     BottomNavigationBarItem(
-      //         icon: Padding(
-      //           padding: const EdgeInsets.only(bottom: 4.0),
-      //           child: Icon(Icons.download, color: Colors.white),
-      //         ),
-      //         label: 'Download')
-      //   ],
-      //   unselectedItemColor: Colors.white,
-      //   selectedLabelStyle: TextStyle(fontSize: 12),
-      //   selectedItemColor: Colors.white,
-      //   onTap: ontap,
-      // ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -322,7 +282,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   SizedBox(
                     height: 109,
-                    child: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                    child:
+                    FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
                       future: getData(),
                       // Specify the type of data expected in the future builder
                       builder: (context, snapshot) {
