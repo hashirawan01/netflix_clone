@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Home'),
+      // home: const MyHomePage(title: 'Home'),
+      home: Login(),
     );
   }
 }
@@ -45,6 +46,109 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Center(child: SizedBox(width:90,child: Center(child: Image.asset("assets/images/netflix.png")))),
+
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top:108.0),
+            child: Center(child: Text("Who's Watching?",style: TextStyle(color: Colors.white,fontSize: 18),)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top:28.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: (){},
+                  child: Column(
+                    children: [
+                      SizedBox(width:80,child: Image(image: AssetImage("assets/images/man.png"))),
+                      Padding(
+                        padding: const EdgeInsets.only(top:8.0),
+                        child: Text("HAshir",style: TextStyle(color: Colors.white),),
+                      )
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: (){},
+                  child: Column(
+                    children: [
+                      SizedBox(width:80,child: Image(image: AssetImage("assets/images/man.png"))),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text("HAshir",style: TextStyle(color: Colors.white)),
+                      )
+                    ],
+                  ),
+                )
+
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top:58.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+
+                  },
+                  child: Column(
+                    children: [
+                      SizedBox(width:80,child: Image(image: AssetImage("assets/images/man.png"))),
+                      Padding(
+                        padding: const EdgeInsets.only(top:8.0),
+                        child: Text("HAshir",style: TextStyle(color: Colors.white),),
+                      )
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+
+                  },
+                  child: Column(
+                    children: [
+                      SizedBox(width:80,child: Image(image: AssetImage("assets/images/man.png"))),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Text("HAshir",style: TextStyle(color: Colors.white)),
+                      )
+                    ],
+                  ),
+                )
+
+              ],
+            ),
+          )
+
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
@@ -56,43 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
       });
       pageController.jumpToPage(pagevalue);
     }
-
-    //for fetching the data from firebase thses function is used
-    Future<QuerySnapshot<Map<String, dynamic>>> getData() async {
-      final firestore = FirebaseFirestore.instance;
-      QuerySnapshot<Map<String, dynamic>> snapshot =
-          await firestore.collection('popular').get();
-      return snapshot;
-    }
-
-    Future<QuerySnapshot<Map<String, dynamic>>> getAnimatedData() async {
-      final firestore = FirebaseFirestore.instance;
-      QuerySnapshot<Map<String, dynamic>> snapshot =
-          await firestore.collection('popular').get();
-      return snapshot;
-    }
-
-    Future<QuerySnapshot<Map<String, dynamic>>> getOriginalsData() async {
-      final firestore = FirebaseFirestore.instance;
-      QuerySnapshot<Map<String, dynamic>> snapshot =
-          await firestore.collection('popular').get();
-      return snapshot;
-    }
-
-    Future<QuerySnapshot<Map<String, dynamic>>> getRecommendedData() async {
-      final firestore = FirebaseFirestore.instance;
-      QuerySnapshot<Map<String, dynamic>> snapshot =
-          await firestore.collection('popular').get();
-      return snapshot;
-    }
-
-    Future<QuerySnapshot<Map<String, dynamic>>> getKidsData() async {
-      final firestore = FirebaseFirestore.instance;
-      QuerySnapshot<Map<String, dynamic>> snapshot =
-          await firestore.collection('popular').get();
-      return snapshot;
-    }
-
+    
     return Scaffold(
       backgroundColor: Colors.black,
       bottomNavigationBar: BottomNavigationBar(
