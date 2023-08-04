@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:netflix_clone/Screens/ComingSoon.dart';
 import 'package:netflix_clone/Screens/DownloadScreen.dart';
 import 'package:netflix_clone/Screens/MoreScreen.dart';
+import 'package:netflix_clone/Screens/SignInScreen.dart';
 import 'package:netflix_clone/Screens/detailsScreen.dart';
 import 'package:netflix_clone/Screens/homeScreen.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +35,7 @@ void main() async {
         // home: const MyHomePage(title: 'Home'),
         // home: Login(),
         // home: onboardingShown ? MyHomePage(title: "Home") : OnBoarding(),
-        home:onboardingShown ? Login() : OnBoarding(),
+        home:onboardingShown ? SignIn() : OnBoarding(),
       ),
     ),
   );

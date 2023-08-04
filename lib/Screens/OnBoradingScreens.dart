@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'Login.dart';
+import 'SignInScreen.dart';
 class OnBoarding extends StatefulWidget {
   const OnBoarding({Key? key}) : super(key: key);
 
@@ -63,7 +64,7 @@ class TestScreen extends StatelessWidget {
             onboardingState.setOnboardingShown(true);
             SharedPreferences prefs = await SharedPreferences.getInstance();
             await prefs.setBool('onboarding_shown', true);
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SignIn()));
           },
      ),
       );

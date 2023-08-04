@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/Screens/Login.dart';
+
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
@@ -8,26 +9,79 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(width:30,child: Image.asset("assets/images/netflixN"))
-            ,
-            TextButton(onPressed: ()=>Login(), child: Text("Sign Up"))
+            SizedBox(
+                width: 30, child: Image.asset("assets/images/netflixN.png")),
+            TextButton(onPressed: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
+            }, child: Text("Sign Up" ,style: TextStyle(color: Colors.white),))
           ],
         ),
       ),
-      body: Column(
-        children: [
-          TextFormField(
-            textAlign: TextAlign.center,
-            de
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 88.0),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 18.0,right: 18.0),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Container(
+                  color: Colors.blueGrey,
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    controller: _usernameController,
+                    decoration: InputDecoration(
+                      labelStyle: TextStyle(color: Colors.white),
+                      labelText: "Email Or Phone Number",
+                      hintText: "Enter Username",
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Container(
+                  color: Colors.blueGrey,
+                  child: TextFormField(
+                    textAlign: TextAlign.center,
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                      labelStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.grey),
+                      labelText: "Password",
+                      hintText: "Enter Password",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top:18.0),
+                child: ElevatedButton(onPressed: () {
+
+                }, child: Text("Sign In",style: TextStyle(color: Colors.white,backgroundColor: Colors.transparent),)
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
