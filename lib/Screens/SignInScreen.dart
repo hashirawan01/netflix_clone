@@ -22,7 +22,7 @@ class _SignInState extends State<SignIn> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-                width: 30, child: Image.asset("assets/images/netflixN.png")),
+                width: 80, child: Image.asset("assets/images/netflix.png")),
             TextButton(onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
             }, child: Text("Sign Up" ,style: TextStyle(color: Colors.white),))
@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 88.0),
+        padding: const EdgeInsets.only(top: 188.0),
         child: Padding(
           padding: const EdgeInsets.only(left: 18.0,right: 18.0),
           child: Column(
@@ -74,11 +74,27 @@ class _SignInState extends State<SignIn> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top:18.0),
-                child: ElevatedButton(onPressed: () {
+                child: Container(
+                  width: 320,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.white)
+                  ),
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                    ),
+                      onPressed: () {
 
-                }, child: Text("Sign In",style: TextStyle(color: Colors.white,backgroundColor: Colors.transparent),)
+                  },
+                      child: Text("Sign In",style: TextStyle(color: Colors.white,backgroundColor: Colors.transparent),)
+                  ),
                 ),
-              )
+              ),
+              TextButton(onPressed: null, child: Text("Need Help",style: TextStyle(color: Colors.white),)),
+              TextButton(onPressed: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SignUp()));
+              }, child: Text("New To Netflix Sign Up Now",style: TextStyle(color: Colors.white),))
             ],
           ),
         ),
@@ -86,3 +102,5 @@ class _SignInState extends State<SignIn> {
     );
   }
 }
+
+
