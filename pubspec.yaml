@@ -37,12 +37,14 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   firebase_core: ^2.14.0
+  firebase_auth: ^4.7.2
   intro_screen_onboarding_flutter: ^1.0.0
   shared_preferences: ^2.2.0
   cloud_firestore: ^4.8.2
   provider: ^6.0.5
   chewie: ^1.7.0
   video_player: ^2.7.0
+  modal_progress_hud_nsn: ^0.2.0
   lottie: ^2.3.2
   flutter_native_splash: ^2.0.1
   flutter_launcher_icons: ^0.13.1
