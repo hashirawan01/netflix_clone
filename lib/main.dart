@@ -20,6 +20,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool onboardingShown = prefs.getBool('onboarding_shown') ?? false;
+  bool isLoggedIn = prefs.getBool('is_logged_in') ?? false;
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -35,7 +36,7 @@ void main() async {
         // home: const MyHomePage(title: 'Home'),
         // home: Login(),
         // home: onboardingShown ? MyHomePage(title: "Home") : OnBoarding(),
-        home:onboardingShown ? SignIn() : OnBoarding(),
+        home:onboardingShown ? (isLoggedIn ? MyHomePage(title: 'Home') : SignIn()) : OnBoarding(),
       ),
     ),
   );

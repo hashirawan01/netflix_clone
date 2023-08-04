@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:netflix_clone/Screens/Login.dart';
 import 'package:netflix_clone/Screens/homeScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'SignUp.dart';
 
@@ -20,6 +21,11 @@ class _SignInState extends State<SignIn> {
   late String email;
   late String password;
   bool showSpinner = false;
+  bool isLoggedIn = false;
+  Future<void> saveLoginStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('is_logged_in', true);
+  }
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -111,6 +117,7 @@ class _SignInState extends State<SignIn> {
                                 final user = await _auth.signInWithEmailAndPassword(
                                     email: email, password: password);
                                 if (user != null) {
+                                  await saveLoginStatus();
                                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
                                 }
                               } catch (e) {
