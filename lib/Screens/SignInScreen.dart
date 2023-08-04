@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/Screens/Login.dart';
 
+import 'SignUp.dart';
+
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
@@ -24,7 +26,7 @@ class _SignInState extends State<SignIn> {
             SizedBox(
                 width: 80, child: Image.asset("assets/images/netflix.png")),
             TextButton(onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Login()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SignUp()));
             }, child: Text("Sign Up" ,style: TextStyle(color: Colors.white),))
           ],
         ),
