@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:netflix_clone/Screens/Login.dart';
 import 'package:netflix_clone/Screens/homeScreen.dart';
+import 'package:netflix_clone/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'SignUp.dart';
@@ -118,7 +119,7 @@ class _SignInState extends State<SignIn> {
                                     email: email, password: password);
                                 if (user != null) {
                                   await saveLoginStatus();
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyHomePage(title: "Netflix")));
                                 }
                               } catch (e) {
                                 print(e);

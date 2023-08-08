@@ -20,29 +20,29 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.black,
+      appBar: AppBar(
         backgroundColor: Colors.black,
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          leading: Icon(
-            Icons.search,
-            color: Colors.white,
-          ),
-          title: TextField(
-            decoration: InputDecoration(
-                hintText: "Search For a movie show,",
-                hintStyle: TextStyle(color: Colors.white),
-                suffixIcon: IconButton(
-                    onPressed: null,
-                    icon: Icon(
-                      Icons.mic,
-                      color: Colors.grey,
-                    ))),
-          ),
+        leading: Icon(
+          Icons.search,
+          color: Colors.white,
         ),
-        body: Container(
+        title: TextField(
+          decoration: InputDecoration(
+              hintText: "Search For a movie show,",
+              hintStyle: TextStyle(color: Colors.white),
+              suffixIcon: IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    Icons.mic,
+                    color: Colors.grey,
+                  ))),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
           child: Column(
             children: [
               Text(
