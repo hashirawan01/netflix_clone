@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:netflix_clone/Screens/SignInScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'detailsScreen.dart';
 
@@ -67,13 +69,13 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Colors.black,
             leading: Image.asset('assets/images/logonetflix.png'),
             actions: [
-              MaterialButton(
-                onPressed: () {},
-                child: Text(
-                  "Tv Shows",
-                  style: TextStyle(color: Colors.white, fontSize: 15.0),
-                ),
-              ),
+              // MaterialButton(
+              //   onPressed: () {},
+              //   child: Text(
+              //     "Tv Shows",
+              //     style: TextStyle(color: Colors.white, fontSize: 15.0),
+              //   ),
+              // ),
               MaterialButton(
                 onPressed: () {},
                 child: Text(
@@ -87,6 +89,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {},
                   child: Text(
                     "My List",
+                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MaterialButton(
+                  onPressed: () {
+                    Logout();
+                  },
+                  child: Text(
+                    "Logout",
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                 ),
@@ -538,5 +552,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   RoutToDetail(DocumentSnapshot info) {
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Detail(info: info,)));
+  }
+
+  Future<void> Logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('is_logged_in', false);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => SignIn( )),
+    );
   }
 }
